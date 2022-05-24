@@ -11,6 +11,10 @@
 #include "stm32f4xx_hal.h"
 #include "template_defines.hpp"
 #include "common_interfaces.hpp"
+#include <memory>
+
+class ServoDriver;
+using ServoDriverPtr = std::shared_ptr<ServoDriver>;
 
 class ServoDriver : public Initable{
 private:
@@ -24,7 +28,7 @@ private:
 	bool locked_;
 
 public:
-    ServoDriver(TIM_HandleTypeDef* htim, uint32_t channel, uint16_t min_angle_, uint16_t max_angle, uint16_t min_microsecs, uint16_t max_microsecs);
+    ServoDriver(TIM_HandleTypeDef* htim, uint32_t channel, uint16_t min_angle_, uint16_t max_angle, uint16_t min_microsecs, uint16_t max_microsecs, bool init_by_ctor = false);
     virtual ~ServoDriver();
 
 	void init() override;
@@ -36,4 +40,6 @@ public:
 	void unlock();
 	bool isLocked() const;
 };
+
+
 #endif /* SERVODRIVER_HPP_ */

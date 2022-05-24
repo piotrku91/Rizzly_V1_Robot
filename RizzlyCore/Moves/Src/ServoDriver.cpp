@@ -7,9 +7,9 @@
 
 #include "ServoDriver.hpp"
 
-ServoDriver::ServoDriver(TIM_HandleTypeDef* htim, uint32_t channel, uint16_t min_angle, uint16_t max_angle, uint16_t min_microsecs, uint16_t max_microsecs, bool init_by_ctor = false)
+ServoDriver::ServoDriver(TIM_HandleTypeDef* htim, uint32_t channel, uint16_t min_angle, uint16_t max_angle, uint16_t min_microsecs, uint16_t max_microsecs, bool init_by_ctor)
     : htim_{htim}, channel_{channel}, min_angle_{min_angle}, max_angle_{max_angle}, min_microsecs_{min_microsecs}, max_microsecs_{max_microsecs}, current_position_angle_{0}, locked_{false} {
-if (init) {init();};
+if (init_by_ctor) {init();};
 }
 
 void ServoDriver::init() {
