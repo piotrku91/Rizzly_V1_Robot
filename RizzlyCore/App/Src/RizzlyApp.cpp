@@ -5,7 +5,7 @@
  *      Author: piotr
  */
 
-#include "rizzlyapp.hpp"
+#include <RizzlyApp.hpp>
 #include "ServoDriver.hpp"
 #include "Leg.hpp"
 
@@ -32,9 +32,13 @@ void RizzlyAppInit() {
 
 void RizzlyAppMainLoop() {
     while (true) {
-        Legs[LegsOrder::FrontLeft]->setRotationAngle(TypicalAngles::Pos45);
-        HAL_Delay(2000);
-        Legs[LegsOrder::FrontLeft]->setRotationAngle(TypicalAngles::Pos0);
-        HAL_Delay(2000);
+
+       Legs[LegsOrder::FrontLeft]->setLevelAngleWithAcceleration(120, 5);
+
+       if (!Legs[LegsOrder::FrontLeft]->levelInMove()) {
+           HAL_Delay(500); 
+           Servos[ServoOrder::FrontLeftJoint1]->moveToAngle(0); 
+           HAL_Delay(500); }
+
     }
 }
