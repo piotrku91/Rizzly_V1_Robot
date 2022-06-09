@@ -22,10 +22,9 @@
 #include "tim.h"
 #include "gpio.h"
 
-
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include "rizzlyapp.hpp"
+#include "RizzlyApp.hpp"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -89,18 +88,18 @@ int main(void)
   MX_GPIO_Init();
   MX_TIM1_Init();
   /* USER CODE BEGIN 2 */
-
-
+  RizzlyAppInit();
+   RizzlyAppMainLoop();
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  RizzlyAppInit();
-  RizzlyAppMainLoop();
-
+  while (1)
+  {
     /* USER CODE END WHILE */
 
-
+    /* USER CODE BEGIN 3 */
+  }
   /* USER CODE END 3 */
 }
 

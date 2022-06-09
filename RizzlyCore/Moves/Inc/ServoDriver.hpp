@@ -25,6 +25,7 @@ private:
     uint16_t min_microsecs_;
     uint16_t max_microsecs_;
     uint16_t current_position_angle_;
+    uint16_t target_position_angle_;
     bool inmove_;
 	bool locked_;
 
@@ -35,13 +36,18 @@ public:
 	void init() override;
 	void deinit() override;
 
-	void moveToAngleWithAcceleration(uint16_t target_angle, uint16_t acceleration_step);
-    void moveToAngle(uint16_t target_angle);
+    void setTargetAngle(uint16_t target_angle);
+	void moveToAngleWithAcceleration(uint16_t acceleration_step);
+    void moveToAngle();
     void moveToMicrosecs(uint16_t microsecs);
 	void lock();
 	void unlock();
 	bool isLocked() const;
 	bool inMove() const;
+    bool inTargetPosition() const;
+
+    private:
+    void setCurrentPositionAngle(uint16_t new_current_angle);
 };
 
 
