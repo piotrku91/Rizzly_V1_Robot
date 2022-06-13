@@ -13,6 +13,7 @@
 class MoveForward : public MovePattern
 {
 public:
+    MoveForward();
     void run(LegsVector& Legs) override;
     virtual ~MoveForward() {};
 

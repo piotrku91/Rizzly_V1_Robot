@@ -7,7 +7,11 @@
 
 #include "MoveIdle.hpp"
 
+MoveIdle::MoveIdle()
+{
+}
+
 void MoveIdle::run(LegsVector& Legs)
 {
-
+if (!isAnyStep()) {return;};
 }

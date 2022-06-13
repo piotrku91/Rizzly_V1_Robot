@@ -42,8 +42,6 @@ void RizzlyAppInit() {
 void RizzlyAppMainLoop() {
    // uint32_t i = 120;
     while (true) {
-        Controller.setState(MoveState::Idle);
-        Controller.process();
         Controller.setState(MoveState::Forward);
         Controller.process();
        // Legs[LegsOrder::FrontLeft]->setLevelAngleWithAcceleration(i, 5);
