@@ -11,10 +11,13 @@
 #include "stm32f4xx_hal.h"
 #include "template_defines.hpp"
 #include "common_interfaces.hpp"
+#include <map>
 #include <memory>
 
+enum class ServoOrder;
 class ServoDriver;
 using ServoDriverPtr = std::shared_ptr<ServoDriver>;
+using ServosVector = std::map<ServoOrder, ServoDriverPtr>;
 
 class ServoDriver : public Initable{
 private:

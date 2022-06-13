@@ -11,6 +11,12 @@
 #include <utility>
 #include "ServoDriver.hpp"
 #include "Moveable.hpp"
+#include <map>
+#include <memory>
+
+enum class LegsOrder;
+class Leg;
+using LegsVector = std::map<LegsOrder, std::shared_ptr<Leg>>;
 
 class Leg : public FullMoveable {
 private:
