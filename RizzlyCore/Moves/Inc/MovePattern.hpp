@@ -22,7 +22,8 @@ class MovePattern {
     void setStepsCount(size_t new_step_count) {all_steps_count_ = new_step_count;};
     bool setNextStep() {if (current_step_ < all_steps_count_) {current_step_++; return true;}; 
     if (current_step_ == all_steps_count_) {setStepZero(); 
-    return false;}
+    }
+    return false;
     };
     void setStepZero() {current_step_ = 0;};
 };

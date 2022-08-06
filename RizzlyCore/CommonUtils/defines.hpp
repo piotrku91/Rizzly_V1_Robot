@@ -16,7 +16,8 @@ enum class ServoOrder
 
 enum class LegsOrder
 {
-    FrontLeft
+    FrontLeft,
+    BackRight,
 };
 
 enum TypicalAngles

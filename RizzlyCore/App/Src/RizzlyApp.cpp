@@ -21,10 +21,13 @@ MoveController Controller{Legs, Moves};
 inline void InitServos() {
     Servos[ServoOrder::FrontLeftJoint1] = std::make_shared<ServoDriver>(&htim1, TIM_CHANNEL_1, 0, 120, 800, 1800, true);
     Servos[ServoOrder::FrontLeftJoint2] = std::make_shared<ServoDriver>(&htim1, TIM_CHANNEL_2, 0, 120, 800, 1800, true);
+    Servos[ServoOrder::BackRightJoint1] = std::make_shared<ServoDriver>(&htim1, TIM_CHANNEL_3, 0, 120, 800, 1800, true);
+    Servos[ServoOrder::BackRightJoint2] = std::make_shared<ServoDriver>(&htim1, TIM_CHANNEL_4, 0, 120, 800, 1800, true);
 }
 
 inline void InitLegs() {
     Legs[LegsOrder::FrontLeft] = std::make_shared<Leg>(Servos[ServoOrder::FrontLeftJoint1], Servos[ServoOrder::FrontLeftJoint2]);
+    Legs[LegsOrder::BackRight] = std::make_shared<Leg>(Servos[ServoOrder::BackRightJoint1], Servos[ServoOrder::BackRightJoint2]);
 }
 
 inline void InitMoves() {
