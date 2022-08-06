@@ -122,7 +122,7 @@ MoveForward::MoveForward(LegsVector& legs)
     steps.push_back(step_fl_setmax_level);
     steps.push_back(step_fl_setmax_rotation);
     steps.push_back(step_fl_setmin_level);
-    steps.push_back(step_br_setmin_rotation);
+    steps.push_back(step_fl_setmin_rotation);
     steps.push_back(step_br_setmax_level);
     steps.push_back(step_br_setmax_rotation);
     steps.push_back(step_br_setmin_level);
