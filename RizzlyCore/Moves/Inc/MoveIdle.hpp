@@ -14,7 +14,7 @@ class MoveIdle : public MovePattern
 {
 public:
     MoveIdle();
-    void run(LegsVector& Legs) override;
+    void run() override;
     virtual ~MoveIdle() {};
 
 };

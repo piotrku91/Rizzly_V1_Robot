@@ -32,7 +32,7 @@ inline void InitLegs() {
 
 inline void InitMoves() {
    Moves[MoveState::Idle] = std::make_shared<MoveIdle>();
-   Moves[MoveState::Forward] = std::make_shared<MoveForward>();
+   Moves[MoveState::Forward] = std::make_shared<MoveForward>(Legs);
 }
 
 /* Object creates and inits */
@@ -43,27 +43,8 @@ void RizzlyAppInit() {
 }
 
 void RizzlyAppMainLoop() {
-   // uint32_t i = 120;
     while (true) {
         Controller.setState(MoveState::Forward);
         Controller.process();
-       // Legs[LegsOrder::FrontLeft]->setLevelAngleWithAcceleration(i, 5);
-     //   HAL_Delay(10); 
-
-       // if (Legs[LegsOrder::FrontLeft]->getLevelMoveStatus() == MoveStatus::Finished) {
-        //    Legs[LegsOrder::FrontLeft]->setRotationAngleWithAcceleration(i, 10);
-       //     HAL_Delay(10);
-     //   };
-
-       //  if (Legs[LegsOrder::FrontLeft]->finished()) {
-            // if (i == 120) { i = 0;} else {i = 120;}; 
-          //  Legs[LegsOrder::FrontLeft]->resetMoveStatus();
-         //   HAL_Delay(1000);
- //       };
-
-
-
-
-
     };
 }

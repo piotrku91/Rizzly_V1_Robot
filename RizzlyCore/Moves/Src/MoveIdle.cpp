@@ -11,7 +11,7 @@ MoveIdle::MoveIdle()
 {
 }
 
-void MoveIdle::run(LegsVector& Legs)
+void MoveIdle::run()
 {
 if (!isAnyStep()) {return;};
 }

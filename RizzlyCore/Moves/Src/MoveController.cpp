@@ -20,7 +20,7 @@ void MoveController::process()
 {
 	if (moves_.empty() || (moves_.find(current_state_) == moves_.end())) {return;};
 
-	moves_[current_state_]->run(legs_);
+	moves_[current_state_]->run();
 	
 }
 

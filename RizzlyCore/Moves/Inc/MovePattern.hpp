@@ -9,23 +9,31 @@
 #define MOVES_INC_MOVEPATTERN_HPP_
 
 #include "Leg.hpp"
+#include <vector>
+#include <functional>
+
+using MoveStep = std::function<bool(LegsVector&)>;
+
+class MovePatternLegsInput
+{
+    protected:
+    LegsVector& legs_;
+
+    public:
+    MovePatternLegsInput(LegsVector& legs):legs_(legs){};
+};
 
 class MovePattern {
     protected:
-    size_t current_step_{0};
-    size_t all_steps_count_{0};
+    std::vector<MoveStep> steps;
+    std::vector<MoveStep>::iterator current_step_;
 
     public:
-    virtual void run(LegsVector& Legs) = 0;
-    size_t isAnyStep() {return (all_steps_count_ > 0);};
-    void setCurrentStep(size_t new_step) { if (new_step < all_steps_count_) {current_step_ = new_step;};};
-    void setStepsCount(size_t new_step_count) {all_steps_count_ = new_step_count;};
-    bool setNextStep() {if (current_step_ < all_steps_count_) {current_step_++; return true;}; 
-    if (current_step_ == all_steps_count_) {setStepZero(); 
-    }
-    return false;
-    };
-    void setStepZero() {current_step_ = 0;};
+    virtual void run() = 0;
+    size_t isAnyStep() {return (steps.size() > 0);};
+    bool setNextStep() 
+    {if (current_step_ != steps.end()) {current_step_++; return true;}; return false;}; 
+    void setStepZero() {current_step_ = steps.begin();};
 };
 
 

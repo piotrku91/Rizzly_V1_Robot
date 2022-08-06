@@ -9,13 +9,15 @@
 #define MOVES_MOVEFORWARD_HPP_
 
 #include "MovePattern.hpp"
+#include "defines.hpp"
 
-class MoveForward : public MovePattern
+class MoveForward : public MovePattern, MovePatternLegsInput
 {
 public:
-    MoveForward();
-    void run(LegsVector& Legs) override;
+    MoveForward(LegsVector& legs);
+    void run() override;
     virtual ~MoveForward() {};
+    
 
 };
 
