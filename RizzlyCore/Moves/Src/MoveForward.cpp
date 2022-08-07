@@ -55,19 +55,25 @@ MoveForward::MoveForward(LegsVector& legs)
 }
 
 bool MoveForward::moveForwardStandardStepCreate(LegsOrder current_leg, LegsVector& legs_vector, MoveJointType move_joint_type, uint16_t target_angle) {
-    if (move_joint_type == MoveJointType::Level) {
+    MoveStatus move_status = MoveStatus::ReadyToGo;
+	if (move_joint_type == MoveJointType::Level) {
         legs_vector[current_leg]->setLevelAngleWithAcceleration(target_angle, 5);
+        move_status = legs_vector[current_leg]->getLevelMoveStatus();
     } else {
         legs_vector[current_leg]->setRotationAngleWithAcceleration(target_angle, 5);
+        move_status = legs_vector[current_leg]->getRotationMoveStatus();
     }
 
     HAL_Delay(20);
-    if (legs_vector[current_leg]->getLevelMoveStatus() == MoveStatus::Finished) {
+
+    if (move_status == MoveStatus::Finished) {
         setNextStep();
         legs_vector[current_leg]->resetMoveStatus();
         HAL_Delay(100);
         return true;
     };
+
+
     return false;
 }
 
