@@ -7,7 +7,7 @@ enum class ServoOrder
     FrontLeftJoint1,
     FrontLeftJoint2,
     FrontRightJoint1,
-    FrontRightJount2,
+    FrontRightJoint2,
     BackLeftJoint1,
     BackLeftJoint2,
     BackRightJoint1,
@@ -17,7 +17,9 @@ enum class ServoOrder
 enum class LegsOrder
 {
     FrontLeft,
-    BackRight,
+    FrontRight,
+    BackLeft,
+    BackRight
 };
 
 enum TypicalAngles

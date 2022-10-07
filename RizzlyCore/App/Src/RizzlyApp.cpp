@@ -23,10 +23,16 @@ inline void InitServos() {
     Servos[ServoOrder::FrontLeftJoint2] = std::make_shared<ServoDriver>(&htim1, TIM_CHANNEL_2, 0, 120, 800, 1800, true);
     Servos[ServoOrder::BackRightJoint1] = std::make_shared<ServoDriver>(&htim1, TIM_CHANNEL_3, 0, 120, 800, 1800, true);
     Servos[ServoOrder::BackRightJoint2] = std::make_shared<ServoDriver>(&htim1, TIM_CHANNEL_4, 0, 120, 800, 1800, true);
+    Servos[ServoOrder::FrontLeftJoint1] = std::make_shared<ServoDriver>(&htim2, TIM_CHANNEL_1, 0, 120, 800, 1800, true);
+    Servos[ServoOrder::FrontLeftJoint2] = std::make_shared<ServoDriver>(&htim2, TIM_CHANNEL_2, 0, 120, 800, 1800, true);
+    Servos[ServoOrder::BackRightJoint1] = std::make_shared<ServoDriver>(&htim2, TIM_CHANNEL_3, 0, 120, 800, 1800, true);
+    Servos[ServoOrder::BackRightJoint2] = std::make_shared<ServoDriver>(&htim2, TIM_CHANNEL_4, 0, 120, 800, 1800, true);
 }
 
 inline void InitLegs() {
     Legs[LegsOrder::FrontLeft] = std::make_shared<Leg>(Servos[ServoOrder::FrontLeftJoint1], Servos[ServoOrder::FrontLeftJoint2]);
+    Legs[LegsOrder::FrontRight] = std::make_shared<Leg>(Servos[ServoOrder::FrontRightJoint1], Servos[ServoOrder::FrontRightJoint2]);
+    Legs[LegsOrder::BackLeft] = std::make_shared<Leg>(Servos[ServoOrder::BackLeftJoint1], Servos[ServoOrder::BackLeftJoint2]);
     Legs[LegsOrder::BackRight] = std::make_shared<Leg>(Servos[ServoOrder::BackRightJoint1], Servos[ServoOrder::BackRightJoint2]);
 }
 
@@ -43,8 +49,8 @@ void RizzlyAppInit() {
 }
 
 void RizzlyAppMainLoop() {
+    Controller.setState(MoveState::Forward);
     while (true) {
-        Controller.setState(MoveState::Forward);
         Controller.process();
     };
 }
