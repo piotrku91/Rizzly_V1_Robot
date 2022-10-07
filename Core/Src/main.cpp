@@ -87,9 +87,9 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   MX_TIM1_Init();
+  MX_TIM2_Init();
   /* USER CODE BEGIN 2 */
-  RizzlyAppInit();
-   RizzlyAppMainLoop();
+
   /* USER CODE END 2 */
 
   /* Infinite loop */
