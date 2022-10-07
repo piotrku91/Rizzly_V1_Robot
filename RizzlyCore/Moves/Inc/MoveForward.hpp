@@ -21,13 +21,10 @@ class MoveForward : public MovePattern, MovePatternLegsInput
 {
 public:
     MoveForward(LegsVector& legs);
-    void run() override;
     virtual ~MoveForward() {};
 
 private:
     inline bool moveForwardStandardStepCreate(LegsOrder current_leg, LegsVector& legs_vector, MoveJointType move_joint_type, uint16_t target_angle);
-    
-
 };
 
 #endif /* MOVES_MOVEFORWARD_HPP_ */

@@ -77,14 +77,3 @@ bool MoveForward::moveForwardStandardStepCreate(LegsOrder current_leg, LegsVecto
     return false;
 }
 
-void MoveForward::run() {
-    if (!isAnyStep()) {
-        return;
-    };
-
-    if (*current_step_ && current_step_ != steps.end()) {
-        (*current_step_)(legs_);
-    } else {
-        setStepZero();
-    }
-}

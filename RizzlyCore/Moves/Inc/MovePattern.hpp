@@ -29,12 +29,10 @@ class MovePattern {
     std::vector<MoveStep>::iterator current_step_;
 
     public:
-    virtual void run() = 0;
-    size_t isAnyStep() {return (steps.size() > 0);};
-    bool setNextStep() 
-    {if (current_step_ != steps.end()) {current_step_++; return true;}; return false;}; 
-    void setStepZero() {current_step_ = steps.begin();};
+    virtual void run(LegsVector& legs);
+    size_t isAnyStep();
+    bool setNextStep();
+    void setStepZero();
+
 };
-
-
 #endif /* MOVES_INC_MOVEPATTERN_HPP_ */
