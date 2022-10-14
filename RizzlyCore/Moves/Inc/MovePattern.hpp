@@ -9,6 +9,7 @@
 #define MOVES_INC_MOVEPATTERN_HPP_
 
 #include "Leg.hpp"
+#include "defines.hpp"
 #include <vector>
 #include <functional>
 
@@ -30,6 +31,7 @@ class MovePattern {
 
     public:
     virtual void run(LegsVector& legs);
+    virtual bool createDefaultMoveStep(LegsOrder current_leg, LegsVector& legs_vector, MoveJointType move_joint_type, uint16_t target_angle);
     size_t isAnyStep();
     bool setNextStep();
     void setStepZero();

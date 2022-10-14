@@ -20,7 +20,6 @@ Rotation
 };
 
 using MovesAvailable = std::map<MoveState, std::shared_ptr<MovePattern>>;
-
 class MoveController final {
 private:
 	LegsVector& legs_;

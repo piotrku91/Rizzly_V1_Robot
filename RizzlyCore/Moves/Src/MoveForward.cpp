@@ -10,51 +10,51 @@
 
 MoveForward::MoveForward(LegsVector& legs)
     : MovePatternLegsInput(legs) {
-    MoveStep step_fl_setmax_level = [this](LegsVector& Legs) {
-        return moveForwardStandardStepCreate(LegsOrder::FrontLeft, Legs, MoveJointType::Level, TypicalAngles::Pos120);
+    MoveStep setmax_level_frontleft = [this](LegsVector& Legs) {
+        return createDefaultMoveStep(LegsOrder::FrontLeft, Legs, MoveJointType::Level, TypicalAngles::Pos120);
     };
 
-    MoveStep step_fl_setmax_rotation = [this](LegsVector& Legs) {
-        return moveForwardStandardStepCreate(LegsOrder::FrontLeft, Legs, MoveJointType::Rotation, TypicalAngles::Pos120);
+    MoveStep setmax_rotation_frontleft = [this](LegsVector& Legs) {
+        return createDefaultMoveStep(LegsOrder::FrontLeft, Legs, MoveJointType::Rotation, TypicalAngles::Pos120);
     };
 
-    MoveStep step_fl_setmin_level = [this](LegsVector& Legs) {
-        return moveForwardStandardStepCreate(LegsOrder::FrontLeft, Legs, MoveJointType::Level, TypicalAngles::Pos0);
+    MoveStep setmin_level_frontleft = [this](LegsVector& Legs) {
+        return createDefaultMoveStep(LegsOrder::FrontLeft, Legs, MoveJointType::Level, TypicalAngles::Pos0);
     };
 
-    MoveStep step_fl_setmin_rotation = [this](LegsVector& Legs) {
-        return moveForwardStandardStepCreate(LegsOrder::FrontLeft, Legs, MoveJointType::Rotation, TypicalAngles::Pos0);
+    MoveStep setmin_rotation_frontleft = [this](LegsVector& Legs) {
+        return createDefaultMoveStep(LegsOrder::FrontLeft, Legs, MoveJointType::Rotation, TypicalAngles::Pos0);
     };
 
-    MoveStep step_br_setmax_level = [this](LegsVector& Legs) {
-        return moveForwardStandardStepCreate(LegsOrder::BackRight, Legs, MoveJointType::Level, TypicalAngles::Pos120);
+    MoveStep setmax_level_backright = [this](LegsVector& Legs) {
+        return createDefaultMoveStep(LegsOrder::BackRight, Legs, MoveJointType::Level, TypicalAngles::Pos120);
     };
 
-    MoveStep step_br_setmax_rotation = [this](LegsVector& Legs) {
-        return moveForwardStandardStepCreate(LegsOrder::BackRight, Legs, MoveJointType::Rotation, TypicalAngles::Pos120);
+    MoveStep setmax_rotation_backright = [this](LegsVector& Legs) {
+        return createDefaultMoveStep(LegsOrder::BackRight, Legs, MoveJointType::Rotation, TypicalAngles::Pos120);
     };
 
-    MoveStep step_br_setmin_level = [this](LegsVector& Legs) {
-        return moveForwardStandardStepCreate(LegsOrder::BackRight, Legs, MoveJointType::Level, TypicalAngles::Pos0);
+    MoveStep setmin_level_backright = [this](LegsVector& Legs) {
+        return createDefaultMoveStep(LegsOrder::BackRight, Legs, MoveJointType::Level, TypicalAngles::Pos0);
     };
 
-    MoveStep step_br_setmin_rotation = [this](LegsVector& Legs) {
-        return moveForwardStandardStepCreate(LegsOrder::BackRight, Legs, MoveJointType::Rotation, TypicalAngles::Pos0);
+    MoveStep setmin_rotation_backright = [this](LegsVector& Legs) {
+        return createDefaultMoveStep(LegsOrder::BackRight, Legs, MoveJointType::Rotation, TypicalAngles::Pos0);
     };
 
-    steps.push_back(step_fl_setmax_level);
-    steps.push_back(step_fl_setmax_rotation);
-    steps.push_back(step_fl_setmin_level);
-    steps.push_back(step_fl_setmin_rotation);
-    steps.push_back(step_br_setmax_level);
-    steps.push_back(step_br_setmax_rotation);
-    steps.push_back(step_br_setmin_level);
-    steps.push_back(step_br_setmin_rotation);
+    steps.push_back(setmax_level_frontleft);
+    steps.push_back(setmax_rotation_frontleft);
+    steps.push_back(setmin_level_frontleft);
+    steps.push_back(setmin_rotation_frontleft);
+    steps.push_back(setmax_level_backright);
+    steps.push_back(setmax_rotation_backright);
+    steps.push_back(setmin_level_backright);
+    steps.push_back(setmin_rotation_backright);
 
     setStepZero();
 }
 
-bool MoveForward::moveForwardStandardStepCreate(LegsOrder current_leg, LegsVector& legs_vector, MoveJointType move_joint_type, uint16_t target_angle) {
+bool MoveForward::createDefaultMoveStep(LegsOrder current_leg, LegsVector& legs_vector, MoveJointType move_joint_type, uint16_t target_angle) {
     MoveStatus move_status = MoveStatus::ReadyToGo;
 	if (move_joint_type == MoveJointType::Level) {
         legs_vector[current_leg]->setLevelAngleWithAcceleration(target_angle, 5);

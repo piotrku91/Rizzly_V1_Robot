@@ -9,6 +9,10 @@
 #include <vector>
 #include "Leg.hpp"
 #include "ServoDriver.hpp"
+
+#include "InputController.hpp"
+#include "InputHardwareButtons.hpp"
+
 #include "MoveController.hpp"
 #include "MoveIdle.hpp"
 #include "MoveForward.hpp"
@@ -16,7 +20,10 @@
 ServosVector Servos;
 LegsVector Legs;
 MovesAvailable Moves;
-MoveController Controller{Legs, Moves};
+
+InputHardwareButtons HardwareButtons;
+InputController InputControl{ &HardwareButtons };
+MoveController MoveControl{ Legs, Moves };
 
 inline void InitServos() {
     Servos[ServoOrder::FrontLeftJoint1] = std::make_shared<ServoDriver>(&htim1, TIM_CHANNEL_1, 0, 120, 800, 1800, true);
@@ -37,8 +44,33 @@ inline void InitLegs() {
 }
 
 inline void InitMoves() {
-   Moves[MoveState::Idle] = std::make_shared<MoveIdle>();
-   Moves[MoveState::Forward] = std::make_shared<MoveForward>(Legs);
+    Moves[MoveState::Idle] = std::make_shared<MoveIdle>();
+    Moves[MoveState::Forward] = std::make_shared<MoveForward>(Legs);
+}
+
+void detectInputAndSetMoveState()
+{
+    switch (InputControl.detectInput())
+    {
+    case InputAxis::Front: {
+        MoveControl.setState(MoveState::Forward);
+        break;
+    }
+    case InputAxis::Back: {
+        break;
+    }
+    case InputAxis::Right: {
+        break;
+    }
+    case InputAxis::Left: {
+        break;
+    }
+    case InputAxis::None:
+    {
+        break;
+    }
+    default: break;
+    }
 }
 
 /* Object creates and inits */
@@ -49,8 +81,9 @@ void RizzlyAppInit() {
 }
 
 void RizzlyAppMainLoop() {
-    Controller.setState(MoveState::Forward);
+    MoveControl.setState(MoveState::Idle);
     while (true) {
-        Controller.process();
+        detectInputAndSetMoveState();
+        MoveControl.process();
     };
 }

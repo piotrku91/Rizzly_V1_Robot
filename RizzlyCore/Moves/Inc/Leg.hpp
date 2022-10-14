@@ -14,9 +14,16 @@
 #include <map>
 #include <memory>
 
+enum class MoveJointType
+{
+    Level,
+    Rotation
+};
+
 enum class LegsOrder;
 class Leg;
 using LegsVector = std::map<LegsOrder, std::shared_ptr<Leg>>;
+
 
 class Leg : public FullMoveable {
 private:

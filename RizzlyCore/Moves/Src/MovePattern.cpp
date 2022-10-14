@@ -22,3 +22,8 @@ bool MovePattern::setNextStep()
 };
 
 void MovePattern::setStepZero() { current_step_ = steps.begin(); };
+
+bool MovePattern::createDefaultMoveStep(LegsOrder current_leg, LegsVector& legs_vector, MoveJointType move_joint_type, uint16_t target_angle)
+{
+return false;
+}

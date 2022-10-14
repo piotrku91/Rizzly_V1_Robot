@@ -11,12 +11,6 @@
 #include "MovePattern.hpp"
 #include "defines.hpp"
 
-enum class MoveJointType
-{
-    Level,
-    Rotation
-};
-
 class MoveForward : public MovePattern, MovePatternLegsInput
 {
 public:
@@ -24,7 +18,7 @@ public:
     virtual ~MoveForward() {};
 
 private:
-    inline bool moveForwardStandardStepCreate(LegsOrder current_leg, LegsVector& legs_vector, MoveJointType move_joint_type, uint16_t target_angle);
+    virtual bool createDefaultMoveStep(LegsOrder current_leg, LegsVector& legs_vector, MoveJointType move_joint_type, uint16_t target_angle) override;
 };
 
 #endif /* MOVES_MOVEFORWARD_HPP_ */

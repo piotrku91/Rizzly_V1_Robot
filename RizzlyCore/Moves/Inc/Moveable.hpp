@@ -9,6 +9,7 @@ enum class MoveStatus
     Finished
 };
 
+
 class MoveableLevel {
 protected:
     MoveStatus levelMoveState_{MoveStatus::ReadyToGo};
