@@ -30,11 +30,12 @@ void Leg::setAll(uint16_t level_target_angle, uint16_t rotation_target_angle) {
 };
 
 void Leg::setLevelAngleWithAcceleration(uint16_t level_target_angle, uint16_t acceleration_step) {
-    if (levelMoveState_ == MoveStatus::Finished) {
+    if (levelMoveState_ == MoveStatus::Finished || !timePast(levelJointLastStepTimeStart_, 40)) {
         return;
     };
     levelJoint_->setTargetAngle(level_target_angle);
     levelJoint_->moveToAngleWithAcceleration(acceleration_step);
+    levelJointLastStepTimeStart_ = HAL_GetTick();
 
     if (levelJoint_->inMove()) {
         levelMoveState_ = MoveStatus::Moving;
@@ -44,11 +45,12 @@ void Leg::setLevelAngleWithAcceleration(uint16_t level_target_angle, uint16_t ac
 };
 
 void Leg::setRotationAngleWithAcceleration(uint16_t rotation_target_angle, uint16_t acceleration_step) {
-    if (rotationMoveState_ == MoveStatus::Finished) {
+    if (rotationMoveState_ == MoveStatus::Finished || !timePast(levelJointLastStepTimeStart_, 40)) {
         return;
     };
     rotationJoint_->setTargetAngle(rotation_target_angle);
     rotationJoint_->moveToAngleWithAcceleration(acceleration_step);
+    rotationJointLastStepTimeStart_ = HAL_GetTick();
 
     if (rotationJoint_->inMove()) {
         rotationMoveState_ = MoveStatus::Moving;

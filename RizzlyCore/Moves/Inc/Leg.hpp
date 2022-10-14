@@ -30,6 +30,9 @@ private:
     ServoDriverPtr levelJoint_;
     ServoDriverPtr rotationJoint_;
 
+    int levelJointLastStepTimeStart_=0;
+    int rotationJointLastStepTimeStart_=0;
+
 public:
     Leg(ServoDriverPtr level_joint, ServoDriverPtr rotation_joint);
 
