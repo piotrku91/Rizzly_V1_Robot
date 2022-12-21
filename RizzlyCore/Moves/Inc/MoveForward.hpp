@@ -19,6 +19,7 @@ public:
 
 private:
     virtual bool createDefaultMoveStep(LegsOrder current_leg, LegsVector& legs_vector, MoveJointType move_joint_type, uint16_t target_angle) override;
+    virtual bool createMoveStepWithWait(LegsOrder current_leg, LegsVector& legs_vector, MoveJointType move_joint_type, uint16_t target_angle, int wait_time) override;
 };
 
 #endif /* MOVES_MOVEFORWARD_HPP_ */

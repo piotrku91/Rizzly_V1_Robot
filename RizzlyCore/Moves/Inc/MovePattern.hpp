@@ -28,10 +28,16 @@ class MovePattern {
     protected:
     std::vector<MoveStep> steps;
     std::vector<MoveStep>::iterator current_step_;
+    bool wait_;
+    int wait_time_;
+
+
 
     public:
+    MovePattern(): wait_(false), wait_time_(0){};
     virtual void run(LegsVector& legs);
     virtual bool createDefaultMoveStep(LegsOrder current_leg, LegsVector& legs_vector, MoveJointType move_joint_type, uint16_t target_angle);
+    virtual bool createMoveStepWithWait(LegsOrder current_leg, LegsVector& legs_vector, MoveJointType move_joint_type, uint16_t target_angle, int wait_time);
     size_t isAnyStep();
     bool setNextStep();
     void setStepZero();

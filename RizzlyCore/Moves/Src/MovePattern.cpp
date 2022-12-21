@@ -27,3 +27,8 @@ bool MovePattern::createDefaultMoveStep(LegsOrder current_leg, LegsVector& legs_
 {
 return false;
 }
+
+bool MovePattern::createMoveStepWithWait(LegsOrder current_leg, LegsVector& legs_vector, MoveJointType move_joint_type, uint16_t target_angle, int wait_time)
+{
+    return false;
+}

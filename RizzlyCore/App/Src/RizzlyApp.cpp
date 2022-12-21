@@ -30,8 +30,8 @@ inline void InitServos() {
     Servos[ServoOrder::FrontLeftJoint2] = std::make_shared<ServoDriver>(&htim1, TIM_CHANNEL_2, 0, 120, 800, 1800, true);
     Servos[ServoOrder::BackRightJoint1] = std::make_shared<ServoDriver>(&htim1, TIM_CHANNEL_3, 0, 120, 800, 1800, true);
     Servos[ServoOrder::BackRightJoint2] = std::make_shared<ServoDriver>(&htim1, TIM_CHANNEL_4, 0, 120, 800, 1800, true);
-    Servos[ServoOrder::FrontLeftJoint1] = std::make_shared<ServoDriver>(&htim2, TIM_CHANNEL_1, 0, 120, 800, 1800, true);
-    Servos[ServoOrder::FrontLeftJoint2] = std::make_shared<ServoDriver>(&htim2, TIM_CHANNEL_2, 0, 120, 800, 1800, true);
+    Servos[ServoOrder::FrontRightJoint1] = std::make_shared<ServoDriver>(&htim2, TIM_CHANNEL_1, 0, 120, 800, 1800, true);
+    Servos[ServoOrder::FrontRightJoint2] = std::make_shared<ServoDriver>(&htim2, TIM_CHANNEL_2, 0, 120, 800, 1800, true);
     Servos[ServoOrder::BackLeftJoint1] = std::make_shared<ServoDriver>(&htim2, TIM_CHANNEL_3, 0, 120, 800, 1800, true);
     Servos[ServoOrder::BackLeftJoint2] = std::make_shared<ServoDriver>(&htim2, TIM_CHANNEL_4, 0, 120, 800, 1800, true);
 }
