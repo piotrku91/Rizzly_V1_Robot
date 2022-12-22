@@ -10,9 +10,40 @@
 
 MoveForward::MoveForward(LegsVector& legs)
     : MovePatternLegsInput(legs) {
+
+        // front right
     MoveStep setmax_level_frontleft = [this](LegsVector& Legs) {
-        return createDefaultMoveStep(LegsOrder::FrontLeft, Legs, MoveJointType::Level, TypicalAngles::Pos90);
+        return createDefaultMoveStepWithWait(LegsOrder::FrontLeft, Legs, MoveJointType::Level, 45, 10);
     };
+
+   MoveStep setmin_rotation_frontleft = [this](LegsVector& Legs) {
+        return createDefaultMoveStepWithWait(LegsOrder::FrontLeft, Legs, MoveJointType::Rotation, TypicalAngles::Pos0, 100);
+    };
+
+        MoveStep setmin_level_frontleft = [this](LegsVector& Legs) {
+        return createDefaultMoveStep(LegsOrder::FrontLeft, Legs, MoveJointType::Level, TypicalAngles::Pos0);
+    };
+
+    MoveStep setmax_rotation_frontleft = [this](LegsVector& Legs) {
+        return createDefaultMoveStepWithWait(LegsOrder::FrontLeft, Legs, MoveJointType::Rotation, TypicalAngles::Pos90, 100);
+    };
+
+    
+
+     MoveStep setmax_rotation_frontright = [this](LegsVector& Legs) {
+        return createDefaultMoveStepWithWait(LegsOrder::FrontRight, Legs, MoveJointType::Rotation, TypicalAngles::Pos90 , 100);
+    };
+
+
+
+
+      MoveStep setmin_rotation_frontright = [this](LegsVector& Legs) {
+        return createDefaultMoveStepWithWait(LegsOrder::FrontRight, Legs, MoveJointType::Rotation, 45, 100);
+    };
+    
+
+
+    /*
 
     MoveStep setmax_rotation_frontleft = [this](LegsVector& Legs) {
         return createDefaultMoveStepWithWait(LegsOrder::FrontLeft, Legs, MoveJointType::Rotation, TypicalAngles::Pos90, 100);
@@ -89,7 +120,13 @@ MoveForward::MoveForward(LegsVector& legs)
     steps.push_back(setmin_level_frontright);
     steps.push_back(setmin_rotation_frontright);
     steps.push_back(setmin_level_backright);
-    steps.push_back(setmin_rotation_backright);
+    steps.push_back(setmin_rotation_backright); */
+    steps.push_back(setmax_level_frontleft);
+    steps.push_back(setmin_rotation_frontleft);
+    steps.push_back(setmin_level_frontleft);
+    steps.push_back(setmax_rotation_frontleft);
+    steps.push_back(setmin_rotation_frontright);
+    steps.push_back(setmax_rotation_frontright);
 
     setStepZero();
 }

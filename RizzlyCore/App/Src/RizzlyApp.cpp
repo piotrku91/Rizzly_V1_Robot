@@ -80,10 +80,30 @@ void RizzlyAppInit() {
     InitMoves();
 }
 
+void RizzlyAppHomePos()
+{
+
+    Legs[LegsOrder::FrontLeft]->setAll(45, 45);
+    Legs[LegsOrder::FrontRight]->setAll(45, 45);
+    Legs[LegsOrder::BackLeft]->setAll(45, 45);
+    Legs[LegsOrder::BackRight]->setAll(45, 45);
+
+    HAL_Delay(50);
+
+    Legs[LegsOrder::FrontLeft]->setAll(0, 45);
+    Legs[LegsOrder::FrontRight]->setAll(90, 45);
+    Legs[LegsOrder::BackLeft]->setAll(90, 45);
+    Legs[LegsOrder::BackRight]->setAll(0, 45);
+
+}
+
 void RizzlyAppMainLoop() {
     MoveControl.setState(MoveState::Forward);
+
+    RizzlyAppHomePos();
+
     while (true) {
-        //detectInputAndSetMoveState();
+        detectInputAndSetMoveState();
         MoveControl.process();
     };
 }
